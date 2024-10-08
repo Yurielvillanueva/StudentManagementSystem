@@ -1,9 +1,18 @@
-import Pacakge.Student;
+import Package.Student;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
 public class SMS {
+    private List<Student> students; // Use a list to manage multiple students
+
+    // Constructor to initialize the students list
+    public SMS() {
+        students = new ArrayList<>();
+    }
+
     public static void main(String[] args) {
         SMS sms = new SMS();
-
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -26,7 +35,7 @@ public class SMS {
                     String name = scanner.next();
                     System.out.print("Enter student email: ");
                     String email = scanner.next();
-                    Student student = new Student(id, name, email);
+                    Student student = new Student(id, name, email); // Assuming the Student class has a constructor that takes these parameters
                     sms.addStudent(student);
                     break;
                 case 2:
@@ -63,5 +72,34 @@ public class SMS {
                     System.out.println("Invalid choice. Please try again.");
             }
         }
+    }
+
+    // Sample implementation of methods you need to define
+    public void addStudent(Student student) {
+        students.add(student);
+        System.out.println("Student added successfully.");
+    }
+
+    public void deleteStudent(int studentId) {
+        // Implement the delete logic
+        // Loop through the list and remove the student with the matching ID
+    }
+
+    public void updateStudent(int studentId, String newName, String newEmail) {
+        // Implement the update logic
+        // Find the student by ID and update their details
+    }
+
+    public void displayAllStudents() {
+        // Implement the logic to display all students
+        // Loop through the students list and print details
+    }
+
+    public void searchStudentByName(String name) {
+        // Implement the search logic by name
+    }
+
+    public void searchStudentById(int id) {
+        // Implement the search logic by ID
     }
 }
