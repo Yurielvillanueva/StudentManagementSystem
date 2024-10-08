@@ -4,9 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SMS {
-    private List<Student> students; // Use a list to manage multiple students
+    private List<Student> students;
 
-    // Constructor to initialize the students list
     public SMS() {
         students = new ArrayList<>();
     }
@@ -15,7 +14,6 @@ public class SMS {
         SMS sms = new SMS();
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
             System.out.println("1. Add student");
             System.out.println("2. Delete student");
             System.out.println("3. Update student");
@@ -26,17 +24,20 @@ public class SMS {
 
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
                     System.out.print("Enter student ID: ");
                     int id = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline left-over
                     System.out.print("Enter student name: ");
-                    String name = scanner.next();
+                    String name = scanner.nextLine();
                     System.out.print("Enter student email: ");
-                    String email = scanner.next();
-                    Student student = new Student(id, name, email); // Assuming the Student class has a constructor that takes these parameters
+                    String email = scanner.nextLine();
+                    Student student = new Student(id, name, email);
                     sms.addStudent(student);
+                    System.out.println("Student added successfully.");
                     break;
                 case 2:
                     System.out.print("Enter student ID to delete: ");
@@ -46,10 +47,11 @@ public class SMS {
                 case 3:
                     System.out.print("Enter student ID to update: ");
                     int updateId = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline left-over
                     System.out.print("Enter new student name: ");
-                    String updateName = scanner.next();
+                    String updateName = scanner.nextLine();
                     System.out.print("Enter new student email: ");
-                    String updateEmail = scanner.next();
+                    String updateEmail = scanner.nextLine();
                     sms.updateStudent(updateId, updateName, updateEmail);
                     break;
                 case 4:
@@ -57,12 +59,13 @@ public class SMS {
                     break;
                 case 5:
                     System.out.print("Enter student name to search: ");
-                    String searchName = scanner.next();
+                    String searchName = scanner.nextLine();
                     sms.searchStudentByName(searchName);
                     break;
                 case 6:
                     System.out.print("Enter student ID to search: ");
                     int searchId = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline left-over
                     sms.searchStudentById(searchId);
                     break;
                 case 7:
@@ -71,35 +74,19 @@ public class SMS {
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
-        }
     }
 
-    // Sample implementation of methods you need to define
     public void addStudent(Student student) {
         students.add(student);
-        System.out.println("Student added successfully.");
     }
-
     public void deleteStudent(int studentId) {
-        // Implement the delete logic
-        // Loop through the list and remove the student with the matching ID
     }
-
     public void updateStudent(int studentId, String newName, String newEmail) {
-        // Implement the update logic
-        // Find the student by ID and update their details
     }
-
     public void displayAllStudents() {
-        // Implement the logic to display all students
-        // Loop through the students list and print details
     }
-
     public void searchStudentByName(String name) {
-        // Implement the search logic by name
     }
-
     public void searchStudentById(int id) {
-        // Implement the search logic by ID
     }
 }
